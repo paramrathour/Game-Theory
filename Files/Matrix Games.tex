@@ -1,0 +1,84 @@
+\section{Matrix Games}
+Two player zero-sum games describe strictly competitive situations involving two players.
+Matrix games are two player zero-sum games with finite strategy sets.
+Matrix games are interesting in many ways and their analysis is tractable due to their simplicity and special structure.
+
+A two person zero-sum game is a strategic form game $\langle \{1, 2\}, (S_1, S_2), (u_1, u_2)\rangle$ such that $u+1(s_1, s_2) + u+2(s_1, s_2) = 0 \ \forall s_1 \in S_1; \forall s_2 \in S_2$.
+We also use the notation $\langle \{1, 2\}, (S_1, S_2), (u_1, u_2)\rangle$.
+A critical point to note is that a player maximizing her payoff is equivalent to minimizing the payoff of the other player.
+For this reason, these games are also called strictly competitive games.
+By convention, player 1 is called the \emph{row player} and player 2 is called the \emph{column player}.
+
+Rock Paper Scissors (Example \ref{exm:rps}) is a Matrix Game with the following payoff matrix.
+\[A=
+\begin{bmatrix}
+	0& -1& 1\\
+	1& 0& -1\\
+	-1& 1& 0
+\end{bmatrix}\]
+\subsection{Pure Strategies in Matrix Games}
+These notions are similar to what discussed in Section \ref{sbs:mvmv}
+\begin{defn}[Maxmin Value]
+	Given a matrix game $A$, the maxmin value is defined as:
+	\[\underline{v}=\max_{i\in S_1}\min_{j\in S_2}a_{ij}\]
+\end{defn}
+\begin{defn}[Minmax Value]
+	Given a matrix game $A$, the maxmin value is defined as:
+	\[\overline{}{v}=\min_{j\in S_2}\max_{i\in S_1}a_{ij}\]
+\end{defn}
+The relations in Proposition \ref{prop:mvmvrne} still holds for Matrix Games.
+\begin{defn}[Value in Pure Strategies]
+	Given a matrix game $A$, if $\underline{v} = \overline{v}$, the number $v=\underline{v} = \overline{v}$ is called the value of the matrix game in pure strategies.
+\end{defn}
+\subsection{Saddle Points and Pure Strategy Nash Equilibria}
+\begin{defn}[Saddle Point of a Matrix]
+	Given a matrix $A = [a_{ij}]$, the element $a_{ij}$ is called a saddle point of $A$ (or matrix game $A$) if
+	\[a_{ij}\geq a_{kj}\ \forall k=1,\ldots,m\]
+	\[a_{ij}\leq a_{il}\ \forall l=1,\ldots,n\]
+	That is, the element $a_{ij}$ is simultaneously a maximum in its column and a minimum in its row.
+	Given a matrix game $A$, the strategies $i$ and $j$ are called the saddle point strategies of row player and column player, respectively.
+\end{defn}
+\begin{theorem}
+	A matrix A has a saddle point if and only if $\underline{v} = \overline{v}$.
+\end{theorem}
+\begin{prop}
+	For a matrix game with payoff matrix $A$, $a_{ij}$ is a saddle point if and only if the strategy profile $(i, j)$ is a pure strategy Nash equilibrium.
+\end{prop}
+\begin{prop}
+	If in a matrix game with payoff matrix $A$, the elements $a_{ij}$ and $a_{hk}$ are both saddle points, then $a_{ik}$ and $a_{hj}$ are also saddle points.
+	Also, all saddle points in the game yield the same respective payoffs to the players.
+\end{prop}
+\subsection{Mixed Strategies in Matrix Games}
+We have seen that saddle points or pure strategy Nash equilibria may not exist in matrix games.
+However, when mixed strategies are allowed, equilibria are guaranteed to exist.
+Let $x = (x_1,\ldots, x_m)$ and $y = (y_1,\ldots, y_n)$ be the mixed strategies of the row player and the column player respectively.
+Note that $a_{ij}$ is the payoff of the row player when the row player chooses row $i$ and column player chooses column $j$ with probability 1.
+The corresponding payoff for the column player is $-a_{ij}$.
+The expected payoff to the row player with the above mixed strategies $x$ and $y$ can be computed as:
+\[u_1(x,y)=\sum_{i=1}^m \sum_{j=1}^n x_iy_ia_{ij}=xAy\]
+\subsubsection{Row Player’s Optimization Problem (Maxminimization)}
+The optimization problem facing the row player can be expressed as
+\[\text{maximise }\min_{j}\sum_{i=1}^m a_{ij}x_i\text{ subject to }\sum_{i=1}^m x_i=1\quad x_i\geq0\ i=1,\ldots,m\]
+This is succinctly expressed as
+\[\max_{x\in \Delta(S_1)}\min_{y\in\Delta(S_2)}xAy\]
+\subsection{Column Player’s Optimization Problem (Minmaximization)}
+The optimization problem facing the row player can be expressed as
+\[\text{minimise }\max_{i}\sum_{j=1}^n a_{ij}y_j\text{ subject to }\sum_{j=1}^n y_j=1\quad y_j\geq0\ j=1,\ldots,n\]
+This is succinctly expressed as
+\[\min_{y\in\Delta(S_2)}\max_{x\in \Delta(S_1)}xAy\]
+The above problems P1 and P2 are equivalent to appropriate linear programs and thus enable us to compute the mixed strategy equilibria.
+\subsection{Minimax Theorem}
+This result is one of the important landmarks in the initial decades of game theory.
+The key implication of the minimax theorem is the existence of a mixed strategy Nash equilibrium in any matrix game.
+\begin{theorem}[Minimax Theorem]
+	For every matrix game with a $(m\times n)$ matrix $A$, there is a mixed strategy of the row player $x^*=(x_1^*,\ldots,x_m^*)$ and a mixed strategy of the column player $y^*=(y_1^*,\ldots,y_n^*)$ such that
+	\[\max_{x\in\Delta(S_1)}xAy^*=\min_{x^*Ay}\]
+	Moreover, the profile $(x^*, y^*)$ is a mixed strategy Nash equilibrium.
+\end{theorem}
+\subsection{A Necessary and Sufficient Condition for Existence of Equilibrium}
+\begin{theorem}
+	Given a matrix game $\langle {1, 2}, S_1, S_2, u_1, -u_1\rangle$, a mixed strategy profile $(x^*, y^*)$ is a Nash equilibrium if and only if
+	\[x^*\in \underbrace{\text{arg max}}_{x\in\Delta(S_1)}\min_{y\in\Delta(S_2)}xAy\quad\text{and}\quad y^*\in \underbrace{\text{arg min}}_{y\in\Delta(S_2)}\max_{x\in\Delta(S_1)}xAy\]
+	Furthermore,
+	\[u_1(x^*,y^*)=-u_2(x^*,y^*)=x^*Ay^*=\max_{x\in\Delta(S_1)}\min_{y\in\Delta(S_2)}xAy=\min_{y\in\Delta(S_2)}\max_{x\in\Delta(S_1)}xAy\]
+\end{theorem}

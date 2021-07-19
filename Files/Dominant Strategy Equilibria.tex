@@ -1,0 +1,70 @@
+\section{Dominant Strategy Equilibria}
+We start the section with the notion of strong dominance.
+Subsequently, we introduce the notions of weak dominance and very weak dominance.
+\subsection{Strong Dominance}
+\begin{defn}[Strongly Dominated Strategy]
+    Given a strategic form game $\Gamma = \langle N,(S_i),(u_i)\rangle$, a strategy $s_i \in S_i$ of player $i$ is said to be strongly dominated by another strategy $s^\prime_i \in S_i$
+    \[u_i(s^\prime_i,s_{-i})> u_i(s_i,s_{-i})\ \forall s_{-i} \in S_{-i}\]
+\end{defn}
+We also say strategy $s^\prime_i$ strongly dominates strategy $s_i$.
+\begin{defn}[Strongly Dominant Strategy]
+    A strategy $s^*_i \in S_i$ is said to be strongly dominant for player $i$ if it strongly dominates every other strategy $s_i \in S_i$.
+    That is $\forall s_i\neq s_i^*,$
+    \[u_i(s^*_i,s_{-i})> u_i(s_i,s_{-i})\ \forall s_{-i} \in S_{-i}\]
+\end{defn}
+\begin{defn}[Strongly Dominant Strategy Equilibrium]
+    A strategy profile $(s_1^*,s_2^*,\ldots,s_n^*)$ is called a strongly dominated strategy equilibrium of the game $\Gamma = \langle N,(S_i),(u_i)\rangle$ if, $\forall i=1,2,\ldots,n$, the strategy $s_i^*$ is a strongly dominated strategy for player $i$.
+\end{defn}
+Clearly, if a (rational) player has a strongly dominant strategy, then we should expect the player to choose that strategy.
+On the other hand, if a player has a strongly dominated strategy, then we should expect the player not to play it.
+
+Recall, Prisoner's Dilemma, $C$ is a strongly dominant strategy for Bill and also for Bob. Therefore $(C, C)$ is a \textbf{strongly dominant strategy equilibrium} for this game.
+\subsection{Weak Dominance}
+\begin{defn}[Weakly Dominated Strategy]
+    A strategy $s_i \in S_i$ of player $i$ is said to be weakly dominated by another strategy $s^\prime_i \in S_i$
+    \[u_i(s^\prime_i,s_{-i})\geq u_i(s_i,s_{-i})\ \forall s_{-i} \in S_{-i}\quad \text{and}\quad u_i(s^\prime_i,s_{-i})> u_i(s_i,s_{-i})\ \text{for some} s_{-i} \in S_{-i}\]
+\end{defn}
+The strategy $s^\prime_i$ weakly dominates strategy $s_i$.
+
+The strict inequality is to be satisfied for at least one $s_{-i}$.
+\begin{defn}[Weakly Dominant Strategy]
+    A strategy $s^*_i \in S_i$ is said to be weakly dominant for player $i$ if it weakly dominates every other strategy $s_i \in S_i$.
+\end{defn}
+\begin{defn}[Weakly Dominant Strategy Equilibrium]
+    A strategy profile $(s_1^*,s_2^*,\ldots,s_n^*)$ is called a weakly dominated strategy equilibrium of the game $\Gamma = \langle N,(S_i),(u_i)\rangle$ if, $\forall i=1,2,\ldots,n$, the strategy $s_i^*$ is a weakly dominated strategy for player $i$.
+\end{defn}
+\subsection{Very Weak Dominance}
+\begin{defn}[Very Weakly Dominated Strategy]
+    A strategy $s_i \in S_i$ of player $i$ is said to be very weakly dominated by another strategy $s^\prime_i \in S_i$
+    \[u_i(s^\prime_i,s_{-i})\geq u_i(s_i,s_{-i})\ \forall s_{-i} \in S_{-i}\]
+\end{defn}
+The strategy $s^\prime_i$ very weakly dominates strategy $s_i$.
+
+Here, the strict inequality need not be satisfied for any $s_{-i}$ unlike in the case of weak dominance where strict inequality must be satisfied for at least one $s_{-i}$.
+\begin{defn}[Very Weakly Dominant Strategy]
+    A strategy $s^*_i \in S_i$ is said to be very weakly dominant for player $i$ if it very weakly dominates every other strategy $s_i \in S_i$.
+\end{defn}
+\begin{defn}[Very Weakly Dominant Strategy Equilibrium]
+    A strategy profile $(s_1^*,s_2^*,\ldots,s_n^*)$ is called a very weakly dominated strategy equilibrium of the game $\Gamma = \langle N,(S_i),(u_i)\rangle$ if, $\forall i=1,2,\ldots,n$, the strategy $s_i^*$ is a very weakly dominated strategy for player $i$.
+\end{defn}
+\begin{table}[H]
+\centering
+	\subfloat[Here $C$ is a weakly dominant strategy.\newline So, $(C,C)$ is weakly dominant strategy equilibrium]{
+    \begin{tabular}{ |c|c|c| } 
+        \hline
+        Bill (1)/ Bob (2) & $NC$ & $C$\\\hline
+        $NC$ & $-2,-2$ & $-10,-2$ \\\hline
+        $C$ & $-2,-10$ & $-5,-5$\\\hline
+    \end{tabular}}
+    \vLine
+    \subfloat[Here $C$ and $NC$ are very weakly dominant strategies.\newline So, all 4 strategy profiles are very weakly dominant strategy equilibrium]{
+    \begin{tabular}{ |c|c|c| } 
+        \hline
+        Bill (1)/ Bob (2) & $NC$ & $C$\\\hline
+        $NC$ & $-2,-2$ & $-5,-2$ \\\hline
+        $C$ & $-2,-10$ & $-5,-10$\\\hline
+    \end{tabular}}
+    \caption{Payoff Matrix for Modified Prisoner's Dilemma}
+\end{table}
+Dominant strategy equilibria (strongly dominant, weakly dominant, very weakly dominant), if they exist, are very desirable, however, rarely do they exist because the conditions to be satisfied are quite demanding.
+A dominant strategy equilibrium requires that each player’s strategy be a best response strategy against all possible strategy choices of the other players.

@@ -1,0 +1,75 @@
+\section{Bayesian Games}
+We have so far studied strategic form games with complete information, where the the entire game is common knowledge to the players.
+We will now study games with incomplete information, where at least one player has private information about the game which the other players may not know.
+While complete information games provide a convenient and useful abstraction for strategic situations, incomplete information games are more realistic.
+\subsection{Games with Incomplete Information}
+A game with \emph{incomplete information} is one in which, when the players are ready to make a move, at least one player has \emph{private information} about the game which the other players may not know.
+The initial private information that a player has, just before making a move in the game, is called the \emph{type} of the player.
+
+For example, in an auction involving a single indivisible item, each player has a valuation for the item, and typically this player would know this valuation deterministically while the other players may only have probabilistic information about how much this player values the item.
+\subsection{Strategic Form Game with Incomplete Information}
+A Strategic Form Game with incomplete information $\Gamma$ is a tuple $\langle N,(\Theta_i),(S_i),(p_i),(u_i)\rangle$, where
+\begin{itemize}
+    \item $N=\{1,2,\ldots,n\}$ is a set of players
+    \item $\Theta_i$ is the set of types of player $i$ where $i=1,2,\ldots,n$
+    \item $S_i$ is the set of actions or pure strategies of player i where $i=1,2,\ldots,n$
+    \item The belief function $p_i$ is a mapping from $\Theta_i$ into $\Delta(\Theta_{-i})$, the set of probability distributions over $\Theta_{-i}$.
+    That is, for any possible type $\theta_i\in\Theta_{i}$, $p_i$ specifies a probability distribution $p_i(.
+    \theta_i)$ over the set $\Theta_{-i}$ representing player $i$'s beliefs about the types of the other players if his own type were $\theta_i$;
+    \item The payoff functions $u_i :\Theta_1 \times \Theta_2 \times \cdots \times \Theta_n \times S_1 \times S_2 \times \cdots \times S_n \rightarrow \R$ assigns to each profile of types and each profile of actions, a payoff that player $i$ would get.
+\end{itemize}
+When we study such a game, we assume that
+\begin{itemize}
+    \item Each player $i$ knows the entire structure of the game as defined above.
+    \item Each player $i$ knows his own type $\theta_i\in\Theta_{i}$.
+    The player learns his type through some signals and each element in his type set is a summary of the information gleaned from the signals.
+    \item The above facts are common knowledge among all the players in $N$.
+    \item The exact type of a player is not known deterministically to the other players who however have a probabilistic guess of what this type is.
+    The belief functions $p_i$ describe these conditional probabilities.
+    Note that the belief functions $p_i$ are also common knowledge among the players.
+\end{itemize}
+\begin{defn}[Consistency of Beliefs]
+    We say beliefs $(p_i)i\in N$ are consistent if there is some common prior distribution over the set of type profiles $\Theta$ such that each player's beliefs given his type are just the conditional probability distributions that can be computed from the prior distribution.
+\end{defn}
+If the game is finite, beliefs are consistent if there exists some probability distribution $\mathbb{P} \in \Delta(\Theta)$ such that
+\[p_i(\theta_{-i}|\theta_i)=\frac{{\mathbb{P}(\theta_i,\theta_{-i})}}{\sum_{t_{-i}\in\Theta_{-i}}{\mathbb{P}(\theta_i,t_{-i})}}\ \forall \theta_i\in\Theta_i; \theta_{-i}\in\Theta_{-i};\forall i\in N\]
+\subsection{Type Agent Representation and the Selten Game}
+This is a representation of Bayesian games that enables a Bayesian game to be transformed to a strategic form game (with complete information).
+Given a Bayesian game $\langle N,(\Theta_i),(S_i),(p_i),(u_i)\rangle$ the Selten game is an equivalent strategic form game $\langle N^s,(S_{\theta_i})_{\theta_i\in\Theta_{i};i\in N},(U_{\theta_i})_{\theta_i\in\Theta_{i};i\in N}\rangle$.
+
+The idea used in formulating a Selten game is to have type agents.
+Each player in the original Bayesian game is now replaced with a number of type agents; in fact, a player is replaced by exactly as many type agents as the number of types in the type set of that player.
+We can safely assume that the type sets of the players are mutually disjoint.
+The set of players in the Selten game is given by:
+\[N^s=\bigcup_{i\in N}\Theta_i\]
+Note that each type agent of a particular player can play precisely the same actions as the player himself.
+This means that for every $\theta_i\in\Theta_{i}$
+\[S_{\theta_i}=S_i\]
+The payoff function $U_{\theta_i}$ for each $\theta_i\in\Theta_{i}$ is the conditional expected utility to player $i$ in the Bayesian game given that $\theta_i$ is his actual type.
+It is a mapping with the following domain and co-domain:
+\[U_{\theta_i}:\left(\{\times,i\in N\},\{\times,\theta_i\in\Theta_{i},S_i\}\right)\rightarrow\R\]
+\subsubsection{Payoff Computation in Selten Game}
+From now on, when there is no confusion, we will use $u$ instead of $U$.
+In general, given a Bayesian game $\Gamma = \langle N,(\Theta_i),(S_i),(p_i),(u_i)\rangle$, suppose $(s_1,\ldots, s_n)$ is a strategy profile where for $i = 1,\ldots, n$, $s_i$ is a mapping from $\theta_i$ to $S_i$.
+Assume the current type of player $i$ to be $\theta_i$.
+Then the expected utility to player $i$ is given by
+\[u_{i}((s_i,s_{-i})|\theta_i)=\mathbb{E}_{\theta_{-i}}[(u_i(\theta_i,\theta_{-i},s_i(\theta_i),s_{-i}(\theta_{-i})))]\]
+For a finite Bayesian game, the above immediately translates to
+\[u_{i}((s_i,s_{-i})|\theta_i)=\sum_{t_{-i}\in\Theta_{-i}}p_i(t_{-i}|\theta_i)\cdot(u_i(\theta_i,\theta_{-i},s_i(\theta_i),s_{-i}(\theta_{-i})))\]
+With this setup, we now define the notion of Bayesian Nash equilibrium.
+\subsection{Bayesian Nash Equilibrium}
+\begin{defn}[Pure Strategy Bayesian Nash Equilibrium]
+    A pure strategy Bayesian Nash equilibrium in a Bayesian game $\Gamma = \langle N,(\Theta_i),(S_i),(p_i),(u_i)\rangle$ can be defined in a natural way as a pure strategy Nash equilibrium of the equivalent Selten game.
+    That is, a profile of strategies $(s_1^*,\ldots,s_n^*)$ is a pure strategy Bayesian Nash equilibrium if $\forall i \in N; \forall s_i : \Theta_i \rightarrow S_i; \forall \theta_i \in \Theta_i$,
+    \[u_{i}((s_i^*,s_{-i}^*)|\theta_i)\geq u_{i}((s_i,s_{-i}^*)|\theta_i)\]
+    That is, $\forall i\in N; \forall a_i\in S_i; \forall \theta_i\in \Theta_{-i}$,
+    \[\mathbb{E}_{\theta_{-i}}[u_{i}(\theta_i,\theta_{-i},s_i^*(\theta_i),s_{-i}^*(\theta_{-i}))]\geq\mathbb{E}_{\theta_{-i}}[u_{i}(\theta_i,\theta_{-i},a_i,s_{-i}^*(\theta_{-i}))]\]
+\end{defn}
+\subsection{Dominant Strategy Equilibria}
+Dominant strategy equilibria of Bayesian games can again be defined using the Selten game representation.
+\begin{defn}[Very Weakly Dominant Strategy Equilibrium]
+    Given a Bayesian game, $\Gamma = \langle N,(\Theta_i),(S_i),(p_i),(u_i)\rangle$ a profile of strategies $(s_1^*,\ldots,s_n^*)$ is called a very weakly dominant strategy equilibrium if $\forall i\in N;\ \forall s_i\in \Theta_i;\ \forall s_{-i}\in \Theta_{-i},\ \forall \theta_i\in \Theta_i$.
+    \[u_{i}((s_i^*,s_{-i})|\theta_i)\geq u_{i}((s_i,s_{-i})|\theta_i)\]
+    That is, $\forall i\in N;\ \forall a_i\in S_i;\ \forall \theta_i\in \Theta_{i},\ \forall s_{-i}:\Theta_{-i}\rightarrow S_{-i}$
+    \[u_{i}((s_i^*,s_{-i})|\theta_i)\geq u_{i}((s_i,s_{-i})|\theta_i)\]
+\end{defn}

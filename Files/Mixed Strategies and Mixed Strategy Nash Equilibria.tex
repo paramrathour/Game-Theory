@@ -1,0 +1,134 @@
+\section{Mixed Strategies and Mixed Strategy Nash Equilibria}
+\subsection{Mixed Strategies}
+\begin{defn}[Mixed Strategy]
+	Given a player $i$ with $S_i$ as the set of pure strategies, a mixed strategy (also called randomized strategy) $\sigma_i$ of player $i$ is a probability distribution over $S_i$.
+	That is, $\sigma_i : S_i \rightarrow [0, 1]$ is a mapping that assigns to each pure strategy $s_i \in S_i$, a probability $\sigma_i(si)$ such that
+	\[\sum_{s_i \in S_i}\sigma_i(s_i)=1\]
+\end{defn}
+A pure strategy of a player, say $s_i \in S_i$, can be considered as a mixed strategy that assigns probability 1 to $s_i$ and probability 0 to all other strategies of player $i$.
+Such a mixed strategy is called a degenerate mixed strategy and is denoted by $e(s_i)$ or simply by $s_i$.
+\begin{defn}[Mixed Extension]
+	The set of all mixed strategies of player $i$ is the set of all probability distributions on the set $S_i$
+	\[\Delta(S_i)=\left\{(\sigma_{i1},\ldots,\sigma_{im}) \in \R^m \ : \ \sigma_{ij}\geq 0 \ \text{for} \ j \in \{1,\ldots,m\}\ \text{and}\ \sum_{j=1}^m \sigma_{ij}=1\right\}\]
+\end{defn}
+Using the mixed extensions of strategy sets, we can define a mixed extension of the pure strategy game $\Gamma = \langle N,(S_i),(u_i)\rangle$ as 
+\[\Gamma = \langle N,(\Delta(S_i)),(U_i)\rangle\]
+\begin{note}
+	$U_i$ is a mapping that maps mixed strategy profiles to real numbers
+	\[U_i:\Delta(S_i)\times\cdots\times\Delta(S_n)\rightarrow\R\]
+\end{note}
+First, we make the standard assumption that the randomizations of individual players are mutually independent.
+This implies that given a mixed strategy profile ($\sigma_1,\ldots,\sigma_n$), the random variables $\sigma_1,\ldots,\sigma_n$ are mutually independent.
+Therefore the joint probability of a pure strategy profile ($s_1,\ldots,s_n$) is given by
+\[\sigma(s_1,\ldots,s_n)=\prod_{i\in N}\sigma_i(s_i)\]
+The payoff functions $U_i$ are defined as
+\[U_i(\sigma_1,\ldots,\sigma_n)=\sum_{(s_1,\ldots,s_n)\in S} \sigma(s_1,\ldots,s_n)\cdot u_i(s_1,\ldots,s_n)\]
+\subsection{Mixed Strategy Nash Equilibrium}
+We now define the notion of a mixed strategy Nash equilibrium, which is a natural extension of the notion of pure strategy Nash equilibrium.
+\begin{defn}[Mixed Strategy Nash Equilibrium]
+Given a strategic form game $\Gamma = \langle N,(S_i),(u_i)\rangle$, the strategy profile $(\sigma_1^*,\sigma_2^*,\ldots,\sigma_n^*)$ is called a Nash equilibrium if $\forall i\in N$
+\[u_i(\sigma^*_i,\sigma^*_{-i})\geq u_i(\sigma_i,\sigma^*_{-i})\ \forall \sigma_{i} \in \Delta(S_{i})\ \forall i=1,2,\ldots,n\]
+Alternatively,
+\[u_i(\sigma^*_i,\sigma^*_{-i})= \underbrace{\op{max}}_{s_{i} \in \Delta(S_{i})} u_i(s_i,\sigma^*_{-i})\ \forall i=1,2,\ldots,n\]
+\end{defn}
+Similar to \ref{def:brc}
+\[b_i(\sigma{-i}) = \{\sigma_i \in \Delta(S_i) : u_i(\sigma_i, \sigma{-i}) \geq u_i(\sigma^\prime_i, \sigma{-i}) \ \forall\  \sigma^\prime_i \in \Delta(S_i)\}\]
+That is, each player’s Nash equilibrium strategy is a best response to the Nash equilibrium strategies of the other players
+\subsection{Properties of Mixed Strategies}
+\begin{defn}[Convex Combination]
+	Given real numbers $y_1,\ldots,y_n$, a convex combination of these numbers is a weighted sum of the form $\lambda_1y_1 + \lambda_2y_2 + \cdots + \lambda_ny_n$, where
+	\[0\leq \lambda_i\leq1 \quad \text{for}\quad i \in \{1,\ldots,n\};\quad \sum_{i=1}^{n}\lambda_i=1\]
+\end{defn}
+\begin{prop}
+	Let $\Gamma = \langle N,(S_i),(u_i)\rangle$ be a strategic form game.
+	Then $u_i(\sigma_i, \sigma_{-i})$ can be expressed as the convex combination:
+	\[u_i(\sigma_i,\sigma_{-i})=\sum_{s_i\in S_i} \sigma_i(s_i)\cdot u_i(s_i,\sigma_{-i})\]
+	where
+	\[u_i(s_i,\sigma_{-i})=\sum_{s_{-i}\in S_{-i}} \left(\prod_{j\neq i \sigma_j(s_j)}\right)u_i(s_i,s_{-i})\]
+\end{prop}
+\begin{prop}
+	Given a strategic form game $\Gamma = \langle N,(S_i),(u_i)\rangle$, then, for any $\sigma\in \times_{i\in N}\Delta(S_i)$ and for any player $i\in N$
+	\[\max_{\sigma_i\in\Delta(S_i)}u_i(\sigma_i,\sigma_{-i})=\max_{s_i\in S_i} u_{i}(s_i,\sigma_{-i})\]
+	Furthermore,
+	\[\rho_i\in \underbrace{\text{arg max}}_{\sigma_{i}\in \Delta(S_i)}u_i(\sigma_i,\sigma_{-i})\]
+	iff
+	\[\rho_i(x)=0 \ \forall x\notin \underbrace{\text{arg max}}_{\sigma_{i}\in S_i} u_i(s_i,\sigma_{-i})\]
+\end{prop}
+\subsection{Necessary and Sufficient Conditions for a Profile to be a Mixed Strategy Nash Equilibrium}
+\begin{defn}[(Support of a Mixed Strategy]
+	Let $\sigma_i$ be any mixed strategy of a player $i$.
+	The support of $\sigma_i$, denoted by $\delta(\sigma_i)$, is the set of all pure strategies which have non-zero probabilities under $\sigma_i$, that is:
+	\[\delta(\sigma_i)=\{s_i\in S_i:\sigma_i(s_i)>0\}\]
+\end{defn}
+\begin{defn}[Support of a Mixed Strategy Profile]
+	Let $\sigma = (\sigma_1,\ldots,\sigma_n)$ be a mixed strategy profile with $\delta(\sigma_i)$ as the support of $\sigma_i$ for $i\in \{1,\ldots,n\}$.
+	Then the support $\delta(\sigma)$ of the profile $\sigma$ is the Cartesian product of the individual supports, that is $\delta(\sigma_1) \times\ldots\times \delta(\sigma_n)$.
+\end{defn}
+\begin{theorem}
+	The mixed strategy profile $(\sigma_1^*,\ldots,\sigma_n^*)$ is a mixed strategy Nash equilibrium iff $\forall i \in N$,
+	\begin{itemize}
+		\item $u_i(s_i,\sigma^*_{-1}$ is the same $\quad \forall s_i\in \delta(\sigma_i^*))$
+		\item $u_i(s_i,\sigma^*_{-1} \geq u_i(s_i^\prime,\sigma^*_{-1}$ is the same $\quad \forall s_i\in \delta(\sigma_i^*));\quad \forall s_i^\prime \notin \delta(\sigma_i^*)$
+	\end{itemize}
+\end{theorem}
+\subsubsection{Implications of the Necessary and Sufficient Conditions}
+\begin{itemize}
+	\item Given a mixed strategy Nash equilibrium, each player gets the same payoff (as in the equilibrium) by playing any pure strategy having positive probability in her equilibrium mixed strategy.
+	\item The above implies that the player can be indifferent about which of the pure strategies (having positive probability in her equilibrium mixed strategy) she will play.
+	Of course, when this player plays only one of these pure strategies, then it may not be a best response for the other players to play their Nash equilibrium strategies.
+	\item To verify whether or not a mixed strategy profile is a Nash equilibrium, it is enough to consider the effects of only pure strategy deviations (with the rest of the players playing their equilibrium strategies).
+\end{itemize}
+\begin{prop}
+	Given $s_i \in S_i$, let $e(s_i)$ denote the degenerate mixed strategy that assigns probability 1 to $s_i$ and probability 0 to all other strategies in $S_i$.
+	The strategy profile $(s_1^*,\ldots,s_n^*)$ is a pure strategy Nash equilibrium of the game $\langle N,(S_i),(u_i)\rangle$ iff the mixed strategy profile $(e(s_1^*),\ldots,e(s_N^*))$ is a mixed strategy Nash equilibrium of the game $\langle N,(S_i),(u_i)\rangle$.
+\end{prop}
+\subsection{Maxmin Values and Minmax Values in Mixed Strategies}
+These notions are similar to what discussed in Section \ref{sbs:mvmv}
+\begin{defn}[Maxmin Value and Maxmin Strategy]
+	\[\underline{v_i}=\max_{\sigma_i\in \Delta(S_i)} \min_{\sigma_{-i}\in \times_{j\neq i}\Delta(S_{-i})} u_i(\sigma_i,\sigma_{-i})\]
+\end{defn}
+\begin{defn}[Minmax Value and Minmax Strategy]
+	\[\underline{v_i}=\min_{\sigma_{-i}\in \times_{j\neq i}\Delta(S_{-i})} \max_{\sigma_i\in \Delta(S_i)} u_i(\sigma_i,\sigma_{-i})\]
+\end{defn}
+The relations in Proposition \ref{prop:mvmvrne} still holds.
+\subsection{Domination in Mixed Strategies}
+\begin{defn}[Domination in Mixed Strategies]
+	Given two mixed strategies $\sigma_i,\sigma_i^\prime\in \Delta(S_i)$ of player $i$,
+
+	We say $\sigma_i$ strictly dominates $\sigma_i^\prime$ if
+	\[u_i(\sigma_i,\sigma_{-i})>u_i(\sigma_i^\prime,\sigma_{-i}) \ \forall\sigma_{-i}\in \times_{j\neq i}\Delta(S_j)\]
+
+	We say $\sigma_i$ weakly dominates $\sigma_i^\prime$ if
+	\[u_i(\sigma_i,\sigma_{-i})\geq u_i(\sigma_i^\prime,\sigma_{-i}) \ \forall\sigma_{-i}\in \times_{j\neq i}\Delta(S_j)\]
+	\[u_i(\sigma_i,\sigma_{-i})>u_i(\sigma_i^\prime,\sigma_{-i}) \ \text{for some} \sigma_{-i}\in \times_{j\neq i}\Delta(S_j)\]
+
+	We say $\sigma_i$ very weakly dominates $\sigma_i^\prime$ if
+	\[u_i(\sigma_i,\sigma_{-i})\geq u_i(\sigma_i^\prime,\sigma_{-i}) \ \forall\sigma_{-i}\in \times_{j\neq i}\Delta(S_j)\]
+\end{defn}
+\begin{defn}[Dominant Mixed Strategy Equilibrium]
+	If the mixed strategy say $\sigma^*$ strongly (weakly) (very weakly) dominates all other strategies $\sigma_i^\prime\in\Delta(S_i)$, we say $\sigma_i^*$ is a strongly (weakly) (very weakly) dominant strategy of player $i$.
+
+	A strategy profile $(\sigma_1^*,\ldots,\sigma_n^*)$ such that $\sigma^*_i$ is a strictly (weakly) (very weakly) dominant strategy for player $i$, $\forall i \in N$, is called a strictly (weakly) (very weakly) dominant mixed strategy equilibrium.
+\end{defn}
+\begin{note}
+	Any dominant mixed strategy equilibrium is also a mixed strategy Nash equilibrium.
+\end{note}
+\begin{note}
+	A strictly dominant mixed strategy for any player, if one exists, is unique.
+\end{note}
+\subsection{Iterated Elimination of Dominated Strategies}
+We have observed that elimination of strictly dominated strategies simplifies analysis of games.
+We shall formalize this as follows.
+Consider a finite strategic form game $\langle N,(S_i),(u_i)\rangle$.
+Let $k = 1, 2,\ldots,K$ denote the successive rounds in which strictly dominated strategies are eliminated.
+For each player $i \in N$, define the sets of strategies $S_i^k$ as follows.
+\begin{itemize}
+	\item $S_i^1=S_i$
+	\item $S_i^{k+1}\subseteq S_i^k$ for $k=1,2,\ldots,K-1$
+	\item For $k=1,2,\ldots,K-1$, all strategies $s_i\in S_i^k\setminus S_i^{k+1}$ are strictly dominated strategies which are eliminated in the $k^{\text{th}}$ round from the game in which the set of strategies of $j\in N$ is $S_j^k$.
+	\item No strategy in $S_i^K$ is strictly dominated in the game in which the set of strategies of each player $j\in N$ is $S_j^K$.
+\end{itemize}
+The above steps define the process of iterated elimination of strongly dominated strategies.
+The set of strategy profiles
+\[\{(s_1,s_2,\ldots,s_n):s_i\in S_i^K\ \text{for}\ i=1,\ldots,n\}\]
+is said to survive the iterated elimination of strictly dominated strategies

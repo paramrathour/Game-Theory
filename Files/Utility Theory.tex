@@ -1,0 +1,98 @@
+\section{Utility Theory}
+Utilities play a central role in game theory.
+They capture the preferences that the players have for different outcomes in terms of real numbers thus enabling realvalued functions to be used in game theoretic analysis.
+So far we have implicitly assumed that utility functions can correctly and faithfully capture the preferences the players have for different outcomes.
+The utility theory developed by von Neumann and Morgenstern provides a scientific justification for this assumption.
+This section introduces and presents their axiomatic utility theory.
+\subsection{Ordinal Utilities}
+Let $\succeq$ represents the preference relation of player $i$, we are interested in a utility function $u_i (i = 1, 2)$ such that
+\[x_1\succeq_i x_2 \Leftrightarrow u_i(x_1)\geq u_i(x_2)\]
+A scale on which larger numbers represent more preferred outcomes in a way that only the order of the numbers matters and not their absolute or relative magnitude is called an \emph{ordinal scale}.
+Utility numbers determined from preferences in this way are called \emph{ordinal utilities}.
+\subsection{Preferences over Lotteries}
+To describe the interaction of preferences when there is uncertainty about which outcome will be selected, the notion of a lottery (or probability distribution) is a natural tool that can be used.
+Suppose $X = \{x_1, x_2,\ldots, x_m\}$.
+Then a lottery on $X$ is a probability distribution
+\[\sigma=[p_1:x_1;p_2:x_2;\ldots;p_m:x_m]\]
+Note that
+\[p_j\geq 0 \ \text{for}\ j=1,2,\ldots,m \ \text{and}\ \sum_{j=1}^m p_j=1\]
+\subsubsection{Axioms of von Neumann - Morgenstern Utility Theory}
+Let $X$ as usual denote the set of outcomes.
+Consider a player $i$ and suppose we focus on the preferences that the player has over the outcomes in $X$.
+These preferences can be expressed in the form of a binary relation $\succeq$ on $X$.
+Given $x_1, x_2 \in X$, let us define the following for the given player $i$:
+\begin{itemize}
+	\item $x_1 \succeq x_2:$ outcome $x_1$ is weakly preferrred to outcome $x_2$
+	\item $x_1 \succ x_2:$ outcome $x_1$ is strictly preferrred to outcome $x_2$
+	\item $x_1 \sim x_2:$ outcome $x_1$ is equally preferrred to outcome $x_2$
+\end{itemize}
+It is clear that the relation $\succeq$ is reflexive.
+\begin{ax}[Completeness]
+	The completeness property means that every pair of outcomes is related by the preference relation.
+	Moreover, the preference relation $\succeq$ induces an ordering on $X$ which allows for ties among outcomes.
+	This can be formally expressed as
+	\[x_1\succ x_2; \quad\text{or}\quad x_2\succ x_1; \quad\text{or}\quad x_1\sim x_2\quad  \forall x_1,x_2\in X\]
+\end{ax}
+\begin{ax}[Transitivity]
+	This states that
+	\[x_1\succeq x_2 \quad\text{and}\quad x_2\succeq x_3 \quad\rightarrow\quad x_1\succeq x_3\quad  \forall x_1,x_2,x_3\in X\]
+\end{ax}
+\begin{ax}[Substitutability]
+	This axiom is often called \emph{independence}.
+	If $x_1 \sim x_2$, then for all sequences of one or more outcomes $x_3,\ldots, x_m$, and sets of probabilities $p, p_3,\ldots, p_m$ such that
+	\[p+\sum_{j=3}^m p_j=1\]
+	the player is indifferent to the lotteries $\sigma_1 = [p : x_1; p_3 : x_3 ;\ldots; p_m : x_m]$ and $\sigma_2 = [p : x_2; p_3 : x_3 ;\ldots; p_m : x_m]$.
+	We write this as $\sigma_1 \sim \sigma_2$ or
+	\[[p : x_1; p_3 : x_3 ;\ldots; p_m : x_m] \sim [p : x_2; p_3 : x_3 ;\ldots; p_m : x_m]\]
+\end{ax}
+\begin{ax}[Decomposability]
+	This axiom is often called \emph{simplification of lotteries}.
+	Suppose $\sigma$ is a lottery over $X$ and let $P_\sigma(x_i)$ denote the probability that $x_i$ is selected by $\sigma$.
+	The decomposability axiom states that
+	\[P_{\sigma_1}(x_i)= P_{\sigma_2}(x_i)\ \forall x_i\in X \quad\rightarrow\quad \sigma_1\sim\sigma_2\ \forall\sigma_1,\sigma_2\in\Delta(X)\]
+\end{ax}
+\begin{ax}[Monotonicity]
+	Consider a player who strictly prefers outcome $x_1$ to outcome $x_2$.
+	Suppose $\sigma_1$ and $\sigma_2$ are two lotteries over $\{x_1, x_2\}$.
+	Monotonicity implies that the player would prefer the lottery that assigns higher probability to $x_1$.
+	More formally, $\forall x_1, x_2 \in X,$
+	\[x_1\succ x_2 \ \text{and}\ 1\geq p > q\geq 0 \quad\rightarrow\quad [p:x_1;1-p:x_2]\succ[q:x_1;1-q:x_2]\]
+	Intuitively, monotonicity means that players prefer more of a good thing.
+\end{ax}
+\begin{ax}[Continuity]
+	This axiom states that $\forall x_1, x_2, x_3 \in X$,
+	\[x_1\succ x_2 \ \text{and}\ x_2\succ x_3 \quad\rightarrow\quad \exists p\in[0,1]\ \text{such that}\ x_2 \sim[p:x_1;1-p;x_3]\]
+	The implication of the above axiom is that any outcome $x_2$ such that outcome $x_1$ is strictly preferred to $x_2$ but outcome $x_2$ is strictly preferred to another outcome $x_3$ will be indifferent to a player with $[p : x1; 1 - p : x3]$ for some probability $p$.
+\end{ax}
+\subsection{The von Neumann - Morgenstern Theorem}
+\begin{theorem}[The von Neumann - Morgenstern Theorem]
+	Given a set of outcomes $X = \{x_1,\ldots, x_m\}$ and a preference relation $\succeq$ on $X$ that satisfies completeness, transitivity, substitutability, decomposability, monotonicity and continuity, there exists a utility function $u : X \rightarrow [0, 1]$ with the following two properties:
+	\begin{itemize}
+		\item $u(x_1)\geq u(x_2)$ iff $x_1\succeq x_2$, $\forall x_1,x_2\in X$
+		\item $u([p_1:x_1;p_2:x_2;\ldots;p_m:x_m])=\sum_{j=1}^m p_j\cdot(x_j)$
+	\end{itemize}
+\end{theorem}
+\begin{note}
+	Note that the right hand side is linear in the probabilities $p1,\ldots, pm$.
+	This is a noteworthy feature of the von Neumann - Morgenstern utility function.
+	A utility function that satisfies above conditions is aptly called a \emph{von Neumann - Morgenstern utility function}.
+\end{note}
+\begin{prop}[Affine Transformation]
+	Every positive affine transformation U(x) of a utility function u(x) that satisfies U(x) = au(x) + b, where a and b are constants and a > 0, yields another utility function (in this case U) that satisfies properties (1) and (2) of Theorem 8.
+	.
+\end{prop}
+\begin{theorem}[Risk Attitudes]
+	Suppose $x_1, x_2 \in \R$ represent any pair of monetary receipts by a player $i$.
+	Then,
+	\begin{itemize}
+		\item Then player $i$ is risk neutral if $\forall p \in [0, 1]$,
+		\[u_i([p:x_1;(1-p):x_2])=u_i([1:px_1+(1-p)x_2])\ \forall x_1,x_2\in \R\]
+		\item Then player $i$ is risk averse if $\forall p \in [0, 1]$,
+		\[u_i([p:x_1;(1-p):x_2])\leq u_i([1:px_1+(1-p)x_2])\ \forall x_1,x_2\in \R\]
+		\item Then player $i$ is risk loving if $\forall p \in [0, 1]$,
+		\[u_i([p:x_1;(1-p):x_2])\geq u_i([1:px_1+(1-p)x_2])\ \forall x_1,x_2\in \R\]
+	\end{itemize}
+\end{theorem}
+\begin{note}
+	The above theorem implies that the utility function of a risk averse player is concave while the utility function of a risk loving player is convex.
+\end{note}

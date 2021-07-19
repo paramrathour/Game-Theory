@@ -1,0 +1,244 @@
+Game theory is the study of mathematical models of strategic interaction among rational decision-makers.
+Originally, it addressed zero-sum games, in which each participant's gains or losses are exactly balanced by those of the other participants.
+In the 21st century, game theory applies to a wide range of behavioral relations, and is now an umbrella term for the science of logical decision making in humans, animals, and computers.
+The term game used in the phrase game theory corresponds to an interaction involving decision makers or players who are rational and intelligent.
+Informally, rationality of a player implies that the player chooses his strategies so as to maximize a well defined individualistic payoff while intelligence means that players are capable enough to compute their best strategies.
+
+Traditional games such as chess and bridge represent games of a fairly straightforward nature.
+Games that game theory deals with are much more general and could be viewed as abstractions and extensions of the traditional games.
+The abstractions and extensions are powerful enough to include all complexities and characteristics of social interactions.
+For this reason, game theory has proved to be an extremely valuable tool in social sciences in general and economics in particular.
+
+While game theory is concerned with analysis of games, mechanism design is reverse engineering of games involving designing games with desirable outcomes.
+% \subsection{Current Trends}
+\section{Key Notions in Game Theory}
+\subsection{Representation of Games}
+There are two forms of representation. Namely,
+\begin{itemize}
+    \item Strategic Form (or Normal Form)
+    \item Extensive Form
+\end{itemize}
+First we will look at Strategic Form Games also called as Normal Form Games, this is a very commonly used representation for games.
+\subsubsection{Strategic Form}
+A strategic form game is a simultaneous move game that captures each agent's decision problem of choosing a strategy that will counter the strategies adopted by the other agents.
+Each player is faced with this problem and therefore the players can be thought of as simultaneously choosing their strategies from the respective sets $S_1,S_2,\ldots,S_n$.
+A play of the game is as follows, each player simultaneously selects a strategy and informs this to a neutral observer who then computes the outcome and the utilities. Formally,
+\begin{defn}[Strategic Form Game]{\label{def:sfg}}
+    A Strategic Form Game $\Gamma$ is a tuple $\langle N,(S_i)_{i\in N},(u_i)_{i\in N}\rangle$, where
+    \begin{itemize}
+        \item $N=\{1,2,\ldots,n\}$ is a set of players
+        \item $S_1,S_2,\ldots,S_n$ are sets called the strategy sets of the players $1,2,\ldots,n$ respectively
+        \item $u_i : S_1 \times S_2 \times \cdots \times S_n \rightarrow \R$ for $i = 1, 2,\ldots, n$ are mappings called the utility functions or payoff functions.
+    \end{itemize}
+\end{defn}
+The strategies are also called \textbf{actions} or more specifically \textbf{pure strategies}.
+We denote the collection of all strategy profiles or strategy vectors of the players by the set $S$ which is the Cartesian product $S_1 \times S_2 \times \ldots \times S_n$.
+\subsubsection{Extensive Form}
+An Extensive Form of a game, is a representation of games in the form of a decision tree.
+\begin{defn}[Extensive Form Game]{\label{def:efg}}
+    An Extensive Form Game $\Gamma$ is a tuple 
+
+    $\langle N,(A_i)_{i\in N},\mathbb{H},P,(\mathbb{I}_i)_{i\in N},(u_i)_{i\in N}\rangle$, where
+    \begin{itemize}
+        \item $N = {1, 2,\ldots,n}$ is a finite set of players
+        \item $A_i$ for $i=1, 2,\ldots,n$ is the set of actions available to player $i$ (action set of player $i$)
+        \item $\mathbb{H}$ is the set of all terminal histories where a terminal history is a path of actions from the root to a terminal node such that it is not a proper subhistory of any other terminal history. Denote by $S_\mathbb{H}$ the set of all proper subhistories (including the empty history $\varepsilon$) of all terminal histories.
+        \item $P : S_\mathbb{H} \rightarrow N$ is a player function that associates each proper subhistory to a certain player
+        \item $\mathbb{I}_i$ for $i = 1, 2,\ldots,n$ is the set of all information sets of player $i$
+        \item $u_i : \mathbb{H} \rightarrow \R$ for $i = 1, 2,\ldots,n$ gives the utility of player $i$ corresponding to each terminal history.
+    \end{itemize}
+\end{defn}
+\begin{exm}[Rock-Paper-Scissors]{\label{exm:rps}}
+    This is an example of two player zero-sum game, where each player has three strategies, called rock, paper, and scissors.
+    Two players simultaneously display one of three symbols: a rock, a paper, or scissors.
+    The rock symbol beats scissors symbol; scissors symbol beats paper symbol; paper symbol beats rock symbol (symbolically, rock can break scissors; scissors can cut paper; and paper can cover rock).
+
+    \textbf{Strategic Form:} The payoff matrix for this game is given as follows.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{ |c|c|c|c| } 
+            \hline
+            1/2 & Rock & Paper & Scissors\\\hline
+            Rock & $0,0$ & $-1,1$ & $1,-1$\\ \hline
+            Paper & $1,-1$ & $0,0$ &$-1,1$\\ \hline
+            Scissors & $-1,1$ & $1,-1$ & $0,0$\\\hline
+        \end{tabular}
+        \caption{Payoff Matrix for Rock Paper Scissors}
+    \end{table}
+    \begin{note}
+    As a convention, Player 1 is called row player (as in this matrix, each row has same player 1's strategy) and Player 2 is called column player similarly
+    \end{note}
+    For this game,
+    \begin{itemize}
+    \item $N = \{1, 2\}$
+    \item $S_1 = S_2 = \{\text{Rock}, \text{Paper}, \text{Scissors}\}$, let's denote it as \{R, P, S\}
+    \item $u_1(R, R) = 0$, $u_1(R, P) = -1$, $u_1(R, S) = 1$, $u_1(P, R) = 1$, $u_1(P, P) = 0$, $u_1(P, S) = -1$, $u_1(S, R) = -1$, $u_1(S, P) = 1$, $u_1(S, S) = 0$
+    \item $u_2(R, R) = 0$, $u_2(R, P) = 1$, $u_2(R, S) = -1$, $u_2(P, R) = -1$, $u_2(P, P) = 0$, $u_2(P, S) = 1$, $u_2(S, R) = 1$, $u_2(S, P) = -1$, $u_2(S, S) = 0$
+    \end{itemize}
+    \textbf{Extensive Form:}
+    The extensive form for this game is given by the following game tree (A tree each with player 1 \& 2 as root node).
+    \begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \begin{tikzpicture}[scale=0.13, every node/.style={scale=0.6}]
+            \tikzstyle{every node}+=[inner sep=0pt]
+                \draw [black] (36,-15) circle (2.5);
+                \draw (36,-15) node {$1$};
+                \draw [black] (36,-30) circle (2.5);
+                \draw (36,-30) node {$2$};
+                \draw [black] (54,-30) circle (2.5);
+                \draw (54,-30) node {$2$};
+                \draw [black] (18,-30) circle (2.5);
+                \draw (18,-30) node {$2$};
+                \draw (12,-39) node {$(0,0)$};
+                \draw (18,-39) node {$(-1,1)$};
+                \draw (24,-39) node {$(1,-1)$};
+                \draw (30,-39) node {$(1,-1)$};
+                \draw (36,-39) node {$(0,0)$};
+                \draw (42,-39) node {$(-1,1)$};
+                \draw (48,-39) node {$(-1,1)$};
+                \draw (54,-39) node {$(1,-1)$};
+                \draw (60,-39) node {$(0,0)$};
+                \draw (26,-21) node [left] {$R$};
+                \draw (36-0.5,-22) node [left] {$P$};
+                \draw (46,-21) node [right] {$S$};
+                \draw (14,-34) node [left] {$R$};
+                \draw (18-0.5,-35) node [left] {$P$};
+                \draw (22,-34) node [right] {$S$};
+                \draw (32,-34) node [left] {$R$};
+                \draw (36-0.5,-35) node [left] {$P$};
+                \draw (40,-34) node [right] {$S$};
+                \draw (50,-34) node [left] {$R$};
+                \draw (54-0.5,-35) node [left] {$P$};
+                \draw (58,-34) node [right] {$S$};
+                \path [linedash] (39,-30) -- (51,-30);
+                \path [linedash] (33,-30) -- (21,-30);
+                \path [line] (36,-18) -- (36,-27);
+                \path [line] (37.5,-18) -- (52.5,-27);
+                \path [line] (34.5,-18) -- (19.5,-27);
+                \path [line] (17,-33) -- (12,-37);
+                \path [line] (18,-33) -- (18,-37);
+                \path [line] (19,-33) -- (24,-37);
+                \path [line] (35,-33) -- (30,-37);
+                \path [line] (36,-33) -- (36,-37);
+                \path [line] (37,-33) -- (42,-37);
+                \path [line] (53,-33) -- (48,-37);
+                \path [line] (54,-33) -- (54,-37);
+                \path [line] (55,-33) -- (60,-37);
+            \end{tikzpicture}
+            \caption{Player 1 as root node}
+            \label{fig:rps1}
+    \end{subfigure}
+    \vLine
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \begin{tikzpicture}[scale=0.13, every node/.style={scale=0.6}]
+            \tikzstyle{every node}+=[inner sep=0pt]
+                \draw [black] (36,-15) circle (2.5);
+                \draw (36,-15) node {$2$};
+                \draw [black] (36,-30) circle (2.5);
+                \draw (36,-30) node {$1$};
+                \draw [black] (54,-30) circle (2.5);
+                \draw (54,-30) node {$1$};
+                \draw [black] (18,-30) circle (2.5);
+                \draw (18,-30) node {$1$};
+                \draw (12,-39) node {$(0,0)$};
+                \draw (18,-39) node {$(1,-1)$};
+                \draw (24,-39) node {$(-1,1)$};
+                \draw (30,-39) node {$(-1,1)$};
+                \draw (36,-39) node {$(0,0)$};
+                \draw (42,-39) node {$(1,-1)$};
+                \draw (48,-39) node {$(1,-1)$};
+                \draw (54,-39) node {$(-1,1)$};
+                \draw (60,-39) node {$(0,0)$};
+                \draw (26,-21) node [left] {$R$};
+                \draw (36-0.5,-22) node [left] {$P$};
+                \draw (46,-21) node [right] {$S$};
+                \draw (14,-34) node [left] {$R$};
+                \draw (18-0.5,-35) node [left] {$P$};
+                \draw (22,-34) node [right] {$S$};
+                \draw (32,-34) node [left] {$R$};
+                \draw (36-0.5,-35) node [left] {$P$};
+                \draw (40,-34) node [right] {$S$};
+                \draw (50,-34) node [left] {$R$};
+                \draw (54-0.5,-35) node [left] {$P$};
+                \draw (58,-34) node [right] {$S$};
+                \path [linedash] (39,-30) -- (51,-30);
+                \path [linedash] (33,-30) -- (21,-30);
+                \path [line] (36,-18) -- (36,-27);
+                \path [line] (37.5,-18) -- (52.5,-27);
+                \path [line] (34.5,-18) -- (19.5,-27);
+                \path [line] (17,-33) -- (12,-37);
+                \path [line] (18,-33) -- (18,-37);
+                \path [line] (19,-33) -- (24,-37);
+                \path [line] (35,-33) -- (30,-37);
+                \path [line] (36,-33) -- (36,-37);
+                \path [line] (37,-33) -- (42,-37);
+                \path [line] (53,-33) -- (48,-37);
+                \path [line] (54,-33) -- (54,-37);
+                \path [line] (55,-33) -- (60,-37);
+            \end{tikzpicture}
+            \caption{Player 2 as root node}
+            \label{fig:rps2}
+    \end{subfigure}
+    \caption{Game Tree of Rock Paper Scissors}
+    \end{figure}
+    Notice the similarity between both Game Trees. We will consider Figure \ref{fig:rps1} for following discussion.
+    The Game can be written as
+    \begin{itemize}
+    \item $N = \{1, 2\}$
+    \item $A_1 = A_2 = \{\text{Rock}, \text{Paper}, \text{Scissors}\}$, let's denote it as \{R, P, S\}
+    \item $\mathbb{H} = \{(R, R), (R, P), (R, S), (P, R), (P, P), (P, S), (S, R), (S, P), (S, S)\}$
+    \item $S_\mathbb{H} = \{\varepsilon, R, P, S\}$, where $\varepsilon$ denotes the empty history.
+    \item $P(\varepsilon) = 1$, $P(R) = P(P) = P(S) = 2$
+    \item $I_1 = \{\{\varepsilon\}\}$, $I_2 = \{\{R, P, S\}\}$
+    \item $u_1(R, R) = 0$, $u_1(R, P) = -1$, $u_1(R, S) = 1$, $u_1(P, R) = 1$, $u_1(P, P) = 0$, $u_1(P, S) = -1$, $u_1(S, R) = -1$, $u_1(S, P) = 1$, $u_1(S, S) = 0$
+    \item $u_2(R, R) = 0$, $u_2(R, P) = 1$, $u_2(R, S) = -1$, $u_2(P, R) = -1$, $u_2(P, P) = 0$, $u_2(P, S) = 1$, $u_2(S, R) = 1$, $u_2(S, P) = -1$, $u_2(S, S) = 0$
+    \end{itemize}
+\end{exm}
+For detailed discussion on Extensive Form Games, refer Section \ref{sec:efg}
+\subsection{Definitions}
+Before we process, let's introduce some terms which will help in our understanding
+\begin{defn}[Preferences]
+    There can be many outcomes possible for game.
+    Preferences of a player specify qualitatively the player's ranking of the different outcomes of the game.
+\end{defn}
+\begin{defn}[Utilities]
+    Utilities are real valued payoffs that players receive when they play different actions.
+    The utility of a player depends not only on the action played by that player but also on the actions played by the rest of the players.
+\end{defn}
+\begin{defn}[Utility function]
+    The utility function or payoff function of a player is a real valued function defined on the set of all outcomes or strategy profiles.
+    The utility function of each player maps multi-dimensional information (strategy profiles) into real numbers to capture preferences.
+    \textbf{Von Neumann–Morgenstern utility theorem} establishes that there must exist a way of assigning real numbers to different strategy profiles in a way that the decision maker would always choose the option that maximizes her expected utility.
+\end{defn}
+\begin{defn}[Rationality]
+    An agent is said to be rational if the agent always makes decisions in pursuit of her own objectives. One of the key assumptions in game theory is that the players are rational. That is, each agent’s objective is to maximize the expected value of her own payoff measured in some utility scale\footnote{Maximizing expected utility is not necessarily the same as maximizing expected
+monetary returns.
+In general, utility and money are nonlinearly related.
+For example, a certain amount of money may provide different utilities to different players depending on how endowed or desperate they are.}.
+    \begin{note}
+       Depending on how the utility function is defined, rationality could mean self-interest, altruism, indifference, etc.
+    \end{note}
+\end{defn}
+\begin{defn}[Intelligence]
+    Intelligence means that each player in the game knows everything about the game that a game theorist knows, and the player is competent enough to make any inferences about the game that a game theorist can make.
+    In particular, an intelligent player is \emph{strategic}, that is, would fully take into account his knowledge or expectation of behavior of other agents in determining what his optimal response should be.
+    Such a strategy is called a \textbf{best response strategy}.
+    \begin{note}
+        Each player is assumed to have enough resources to carry out the required computations involved in determining a best response strategy.
+    \end{note}
+\end{defn}
+\begin{defn}[Common Knowledge]
+    A fact is common knowledge among the players if every player knows it, every player knows that every player knows it, and so on. That is, every statement of the form ``every player knows that every player knows that $\cdots$ every player knows it'' is true forever.
+    \begin{note}
+    In a strategic form game with complete information, $\langle N,(S_i),(u_i)\rangle$, the set $N$, the strategy sets $S_1,S_2,\ldots,S_n$ and the utility functions $u_1,u_2,\ldots,u_n$ are common knowledge.
+    \end{note}
+\end{defn}
+\begin{defn}[Mutual Knowledge]
+    If it happens that a fact is known to all the players, without the requirement of all players knowing that all players know it, etc., then such a fact is called mutual knowledge.
+\end{defn}
+\begin{defn}[Private Information]
+    A player’s private information is any information that the player has that is not common knowledge or mutual knowledge among any of the players.
+\end{defn}

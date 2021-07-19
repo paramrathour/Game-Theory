@@ -1,0 +1,39 @@
+\section{Strategic Form Games}{\label{sec:sfg}}
+We have already seen the formal definition of Strategic Form Games (\ref{def:sfg}).
+
+The idea behind the strategic form representation is that a player's decision problem is to essentially choose a strategy that will counter most effectively the strategies adopted by the other players.
+Such a strategy is called a best response strategy which is formally defined as follows.
+\begin{defn}[Best Response Strategy]
+    Given a strategic form game $\Gamma = \langle N,(S_i),(u_i)\rangle$ and a strategy profile $s_{-i} \in S_{-i}$, we say $s_i \in S_{i}$ is a best response strategy of player $i$ with respect to $s_{-i}$ if
+    \[u_i(s_i,s_{-i})\geq u_i(s^\prime_i,s_{-i})\ \forall s^\prime_i \in S_i\]
+\end{defn}
+\subsection{Prisoner's Dilemma Game}
+This is one of the most extensively studied problems in game theory, with many interesting interpretations in a wide variety of situations.
+You might have realised that the cover page of my report depicts this game.
+
+Bill and Bob are arrested for allegedly committing a crime and are lodged in separate cells.
+The interrogator questions them separately.
+The interrogator privately tells each prisoner that if he is the only one to confess, he will get a light sentence of 1 year in jail while the other would be sentenced to 10 years in jail.
+If both players confess, they would get 3 years each in jail.
+If neither confesses, then each would get 2 years in jail.
+The interrogator also informs each prisoner what has been told to the other prisoner.
+\begin{table}[h]{\label{tab:pd}}
+\centering
+	\begin{tabular}{ |c|c|c| } 
+        \hline
+        Bill (1)/ Bob (2) & $NC$ & $C$\\\hline
+        $NC$ & $-2,-2$ & $-10,-1$ \\\hline
+        $C$ & $-1,-10$ & $-3,-3$\\\hline
+    \end{tabular}
+    \caption{Payoff Matrix for Prisoner's Dilemma}
+\end{table}
+Here, Bill would like to play a strategy that offers a best response to a best response strategy that the Bob may adopt, Bob also would like to play a strategy that offers a best response to the Bill's best response strategy.
+
+We notice that $(C,C)$ is each player's best response strategy regardless of what the other player plays:
+\[u_1(C,C)=-3>u_1(NC,C)=-10\quad u_1(C,NC)=-1>u_1(NC,NC)=-2\]
+\[u_2(C,C)=-3>u_2(C,NC)=-10\quad u_2(NC,C)=-1>u_2(NC,NC)=-2\]
+Thus $(C, C)$ is a natural prediction for this game.
+However, the outcome $(NC,NC)$ is the best outcome jointly for the players.
+Prisoner’s dilemma is a classic example of a game where rational, intelligent behavior does not lead to an outcome where the sum of utilities of the players is maximal.
+Also, each prisoner has a negative effect or externality on the other.
+When a prisoner moves away from $(NC,NC)$ to reduce his jail term by 1 year, the jail term of the other prisoner increases by 8 years.

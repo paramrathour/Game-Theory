@@ -1,0 +1,72 @@
+%\renewcommand\familydefault{\sfdefault}
+\renewcommand{\d}{\, \mathrm{d}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\op}[1]{\operatorname{#1}}
+\newcommand{\ditto}[1][.4pt]{\xrfill{#1}~\textquotedbl~\xrfill{#1}}
+% \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\newcommand\at[2]{\left.#1\right|_{#2}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\tani}{\tan^{-1}}
+\newcommand{\sini}{\sin^{-1}}
+\newcommand{\cosi}{\cos^{-1}}
+\newcommand{\vLine}{\unskip\ \vrule\ }
+\renewcommand{\arraystretch}{1.3}
+
+%---------------------- Environments ---------------------------%
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{\textbf}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{theorem}[defn]{Theorem}
+\newtheorem{lem}[defn]{Lemma}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{exm}[defn]{Example}
+
+\newtheorem{ax}{Axiom}[section]
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{Note}{Note}
+
+%------------------------- Cover Page --------------------------------%
+\renewcommand\epigraphflush{flushright}
+\renewcommand\epigraphsize{\normalsize}
+\renewcommand{\textflush}{flushepinormal}
+\setlength\epigraphwidth{0.62\textwidth}
+
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+
+\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.6in}
+
+\makeatletter                       
+\def\printauthor{%                  
+    {\large \@author}}              
+\makeatother
+
+% ------------------ Abstract and Acknoledgement --------------------- %
+\usepackage{etoolbox}
+\patchcmd{\abstract}{\titlepage}{}{}{}
+\patchcmd{\endabstract}{\endtitlepage}{}{}{}
+
+%---------------------- For Part 0 ------------------------------%
+\newcommand{\zeroRoman}[1]{% 0 + \Roman
+  \ifcase\value{#1}\relax 0\else% Part 0
+  \Roman{#1}\fi}% All other parts
+\renewcommand{\thepart}{\zeroRoman{part}}
+\setcounter{part}{-1}

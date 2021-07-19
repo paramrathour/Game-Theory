@@ -1,0 +1,128 @@
+\section{Pure Strategy Nash Equilibria}
+We get the notion of Nash equilibrium, a central notion in game theory, if we only insist that each player’s strategy offers a best response against the Nash equilibrium strategies of the other players.
+This solution concept is named after John Nash, one of the most celebrated game theorists of our times.
+\subsection{The Notion of Nash Equilibrium}
+\begin{defn}[Pure Strategy Nash Equilibrium]
+	Given a strategic form game $\Gamma = \langle N,(S_i),(u_i)\rangle$, the strategy profile $s^*=(s_1^*,s_2^*,\ldots,s_n^*)$ is called a pure strategy Nash equilibrium of $\Gamma$ if
+	\[u_i(s^*_i,s^*_{-i})\geq u_i(s_i,s^*_{-i})\ \forall s_{i} \in S_{i}\ \forall i=1,2,\ldots,n\]
+	Alternatively,
+	\[u_i(s^*_i,s^*_{-i})= \underbrace{\op{max}}_{s_{i} \in S_{i}} u_i(s_i,s^*_{-i})\ \forall i=1,2,\ldots,n\]
+	That is, each player’s Nash equilibrium strategy is a best response to the Nash equilibrium strategies of the other players
+\end{defn}
+Another alternate way of describing a pure strategy Nash equilibrium (PSNE).
+\begin{defn}[Best Response Correspondence]{\label{def:brc}}
+	Given a strategic form game $\Gamma = \langle N,(S_i),(u_i)\rangle$,the best response correspondence for player $i$ is the mapping $b_i : S_{-i} \rightarrow 2^{S_i}$ defined by
+	\[b_i(s_{-i}) = \{s_i \in S_i : u_i(s_i, s{-i}) \geq u_i(s^\prime_i, s{-i}) \ \forall\  s^\prime_i \in S_i\}\]
+	It can be seen that the strategy profile $(s_1^*,s_2^*,\ldots,s_n^*)$ is a pure strategy Nash equilibrium iff
+	\[s^*_i \in b_i(s^*_{-i}), \forall i = 1,\ldots, n\]
+\end{defn}
+Again recall Prisoner's Dilemma (Table 3.
+%\ref{tab:pd}
+) :p, $(C, C)$ is the unique Nash equilibrium here.
+To see why, we have to just look at the best response sets:
+\[b_1(C) = \{C\};\quad b_1(NC) = \{C\};\quad b_2(C) = \{C\};\quad b_2(NC) = \{C\}\]
+Since $(s^*_1, s^*_2)$ is a pure strategy Nash equilibrium iff $s^*_1 \in b_1(s^*_2)$ and $s^*_2 \in b_2(s^*_1)$, the only
+possible pure strategy Nash equilibrium here is $(C, C)$.
+In fact as already seen, this is a strongly dominant strategy equilibrium.
+\begin{rem}
+	Given a strategic form game $\Gamma = \langle N,(S_i),(u_i)\rangle$, a strongly (weakly) (very weakly) dominant strategy equilibrium $(s_1^*,\ldots,s_n^*)$ is also a Nash equilibrium.
+
+	In a dominant strategy equilibrium, the equilibrium strategy of each player offers a best response irrespective of the strategies of the rest of the players.
+	In a pure strategy Nash equilibrium, the equilibrium strategy of each player offers a best response against the Nash equilibrium strategies of the rest of the players.
+	Thus, Nash equilibrium is a \textbf{much weaker notion of equilibrium} than a dominant strategy equilibrium.
+\end{rem}
+\begin{note}
+	A Nash equilibrium need not be a dominant strategy equilibrium.
+\end{note}
+\subsection{Games without a Pure Strategy Nash Equilibrium}
+Given a strategic form game, there is no guarantee that a pure strategy Nash equilibrium will exist.
+
+Recall Matching Pennies Game (Example \ref{exm:mp}), it is easy to see that this game does not have a pure strategy Nash equilibrium.
+The Rock Paper Scissors (Example \ref{exm:rps}) game also does not have a Nash equilibrium.
+\subsection{Interpretations of Nash Equilibrium}
+\subsubsection{Prescription}
+Here we see interesting interpretations of Nash equilibrium.
+An adviser or a consultant to the n players would logically prescribe a Nash equilibrium strategy profile to the players.
+If the adviser recommends strategies that do not constitute a Nash equilibrium, then at least one player would find she is better off doing differently than advised.
+If the adviser prescribes strategies that do constitute a Nash equilibrium, then the players are happy because playing the prescribed strategy is best under the assumption that the other players will play their prescribed strategies.
+Thus a logical, rational, adviser would recommend a Nash equilibrium profile to the players.
+\subsubsection{Prediction}
+If the players are rational and intelligent, then a Nash equilibrium provides one possible, scientific prediction for the game.
+For example, a systematic elimination of strongly dominated strategies will lead to a reduced form that will include a Nash equilibrium %see section later
+\subsubsection{Self-Enforcing Agreement}
+A Nash equilibrium can be viewed as an implicit or explicit agreement between the players.
+Once this agreement is reached, it does not need any external means of enforcement because it is in the self-interest of each player to follow this agreement if the others do.
+In a non-cooperative game, agreements cannot be enforced, hence, Nash equilibrium agreements are desirable in the sense of being sustainable under the assumption that only unilateral deviations are possible.
+footnote{A Nash equilibrium is an insurance against only unilateral deviations (that is, only one player at a time deviating from the equilibrium strategy).
+Two or more players deviating might result in players improving their payoffs compared to their equilibrium payoffs.
+For example, in the prisoner’s dilemma problem, $(C, C)$ is a Nash equilibrium.
+If both the players decide to deviate, then the resulting profile is $(NC,NC)$, which is better for both the players.
+Note that $(NC,NC)$ is not a Nash equilibrium.
+
+\subsubsection{Evolution and Steady-State}
+A Nash equilibrium is a potential convergence point of a dynamic adjustment process in which players adjust their behavior to that of other players in the game, constantly searching for strategy choices that will yield them the best results.
+Nash equilibrium is the outcome that results over time when a game is played repeatedly.
+A Nash equilibrium is like a long standing social convention that people are happy to maintain forever.
+This interpretation has been used to explain biological evolution.
+\begin{note}
+	Common knowledge of the game is a standard assumption in identifying a Nash equilibrium.
+	It has been shown that the common knowledge assumption is quite strong and may not be required in its full strength.
+	Assuming mutual knowledge is adequate to identify a Nash equilibrium profile.
+\end{note}
+\subsection{Existence of Multiple Nash Equilibria}
+If a game has multiple Nash equilibria, then a fundamental question to ask is, which of these would get implemented?
+This question has been addressed by numerous game theorists, in particular, Thomas Schelling, who proposed the \textbf{focal point effect}.
+According to Schelling, anything that tends to focus the players’ attention on one equilibrium may make them all expect it and hence fulfill it, like a self-fulfilling prophecy.
+Such a Nash equilibrium, which has some property that distinguishes it from all other equilibria is called a \textbf{focal equilibrium} or a \textbf{Schelling Point}.
+\subsection{Maxmin Values and Minmax Values}{\label{sbs:mvmv}}
+\begin{defn}[Maxmin Value and Maxmin Strategy]
+	Given a strategic form game, $\Gamma = \langle N,(S_i),(u_i)\rangle$, the maxmin value or security value of a player $i$ is given by:
+	\[\underline{v_i}=\max_{s_i\in S_i} \min_{s_{-i}\in S_{-i}} u_i(s_i,s_{-i})\]
+	Any strategy $s_i^*\in S_i$ that guarantees this payoff to player $i$ is called a maxmin strategy or security strategy of player $i$.
+
+	Informally, the maxmin value of a player is the best possible payoff the player can guarantee herself even in the worst case when the other players are free to choose any strategies.
+\end{defn}
+\begin{defn}[Minmax Value and Minmax Strategy]
+	Given a strategic form game, $\Gamma = \langle N,(S_i),(u_i)\rangle$, the maxmin value or security value of a player $i$ is given by:
+	\[\overline{v_i}=\min_{s_{-i}\in S_{-i}} \max_{s_i\in S_i} u_i(s_i,s_{-i})\]
+	Any strategy $s_{-i}^*\in S_{-i}$ of the other players that forces this payoff on player $i$ is called a minmax strategy profile (of the rest of the players) against player $i$.
+
+	Informally, the minmax value of a player $i$ is the lowest payoff that can be forced on the player $i$ when the other players choose strategies that hurt player $i$ the most.
+\end{defn}
+\begin{prop}{\label{prop:mvmvrne}}
+	Suppose a strategic form game  $\Gamma = \langle N,(S_i),(u_i)\rangle$ has a pure strategy Nash equilibrium $(s_1^*,\ldots,s_N^*)$.
+	Then
+	\[u_i((s_1^*,\ldots,s_N^*))\geq\overline{v_i}\ \geq\underline{v_i}\ \forall i\in N\]
+\end{prop}
+\subsection{Pure Strategy Nash Equilibria in Extensive Form Games}
+\begin{defn}[Subgame]
+	Given an extensive form game $\Gamma$ and a non-terminal history $h$, the subgame following $h$ is the part of the game that remains after the history $h$ has occurred.
+\end{defn}
+The notion of Nash equilibrium for extensive form games follows immediately through strategic form game representation of extensive form games.
+\begin{defn}
+	Given an extensive form game $\Gamma = \langle N,(A_i)_{i\in N},\mathbb{H},P,(\mathbb{I}_i)_{i\in N},(u_i)_{i\in N}\rangle$, a strategy profile $s^* = (s_1^*,\ldots,s_N^*)$ is called a pure strategy Nash equilibrium if $\forall i\in N$
+	\[u_i(O(s^*_i,s^*_{-i}))\geq u_i(O(s_i,s^*_{-i})) \ \forall s_i \in S_i\]
+	where $S_i$ is the set of all strategies of player $i \in \{1,\ldots,n\}$ and $O(\cdot)$ denotes the outcome corresponding to a strategy profile.
+\end{defn}
+\begin{defn}[Subgame Perfect Equilibrium]
+	Given an extensive form game 
+
+	$\Gamma = \langle N,(A_i)_{i\in N},\mathbb{H},P,(\mathbb{I}_i)_{i\in N},(u_i)_{i\in N}\rangle$, a strategy profile $s^* = (s_1^*,\ldots,s_N^*)$ is an SGPE if $\forall i \in N$
+	\[u_i(O_h(s^*_i,s^*_{-i}))\geq u_i(O_h(s_i,s^*_{-i})) \ \forall h \in \{x\in s_{\mathbb{H}} \ : \ P(x)=i\}\ \forall s_i \in S_i\]
+	where $O_h(s^*_i,s^*_{-i})$ denotes the outcome corresponding to the history $h$ in the stratgy profile $(s_i^*,s_{-i}^*)$
+
+	Informally, the notion of subgame perfect equilibrium (SGPE) takes into account every possible history in the game and ensures that each player’s strategy is optimal given the strategies of the other players, not only at the start of the game but after every possible history.
+\end{defn}
+From the definition of SGPE, it is clear that SGPE is a strategy profile that induces a Nash equilibrium in every subgame of the game.
+Thus an SGPE is always a Nash equilibrium whereas the converse is clearly not true as we have already seen in the examples.
+
+In a Nash equilibrium of an extensive form game, each player’s strategy is optimal
+given the strategies of the other players in the whole game.
+It may not be optimal in every subgame.
+However it will be optimal in any subgame that is reached when the players follow the Nash equilibrium strategies.
+On the other hand, an SGPE is such that each player’s strategy is optimal in every possible history that may or may not occur if the players follow their strategies.
+
+A subgame perfect equilibrium does not make such assumptions about the actions
+of the other players.
+The concept of SGPE takes into account the possibility of each player, even if on rare occasions, deviating from SGPE actions.
+Each player forms correct beliefs about other players’ strategies and knows how the SGPE provides superior insurance against deviation by other players than a Nash equilibrium.

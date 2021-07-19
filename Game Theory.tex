@@ -1,0 +1,49 @@
+\documentclass[a4paper,11pt]{article}
+
+\input{Files/Packages}
+\input{Files/Custom}
+\title{Game Theory}
+\author{%
+    {\Large\textbf{Param Rathour}}\\[0.4em]
+    {190070049}\\[0.4em]
+    {Department of Electrical Engineering}\\[0.4em]
+    {Indian Institue of Technology Bombay}\\[0.4em]
+    %\texttt{paramrathour3435@gmail.com}\vspace{20pt}}\\
+    {Mentor: Raj Aryan Agrawal}}
+\date{\today}
+
+%\includeonly{Files/Practice Problems 7}
+%\includeonly{Files/Hints}
+
+\begin{document}
+\pagenumbering{gobble}
+\input{Files/Cover}
+\include{Files/Abstract and Acknowledgements}
+\pagenumbering{roman}
+\setcounter{tocdepth}{2}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\part{Introduction}
+\input{Files/Introduction}
+\newpage
+\part{Non-Cooperative Game Theory}
+\input{Files/Extensive Form Games}
+\input{Files/Strategic Form Games}
+\input{Files/Dominant Strategy Equilibria}
+\input{Files/Pure Strategy Nash Equilibria}
+\input{Files/Mixed Strategies and Mixed Strategy Nash Equilibria}
+\input{Files/Matrix Games}
+\input{Files/Bayesian Games}
+\input{Files/Utility Theory}
+% \newpage
+% \part{Game Theory in Action}
+% \input{Files/Braess Paradox} 
+% Braess Paradox Game
+% Second Price Sealed Bid Auction
+\addcontentsline{toc}{section}{References}
+\nocite{*}
+\bibliographystyle{plainurl}
+\bibliography{references}
+% \addcontentsline{toc}{section}{Modified Plan of Action}
+\end{document}

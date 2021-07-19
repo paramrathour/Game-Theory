@@ -1,0 +1,176 @@
+% Template taken from https://www.overleaf.com/latex/templates/kesmaths-beamer/szhrknpcspsz
+% !TeX spellcheck = en_B
+% !TeX encoding = UTF-8 %%%These comments just make you look like you know what you're doing
+\documentclass[10pt]{beamer}  %%% Specifies the class, with 8pt font size
+
+\input{Files/Braess Paradox Preamble} %%%adds the general preamble
+
+\title{\normalsize{Braess's Paradox - How Making Roads Could Slow Up Traffic}} %%%Title and subtitle
+\subtitle{\normalsize{Param Rathour}} %%%This embeds the tikz source code into the resulting pdf...
+% \subtitle{Template, \textattachfile{Braess Paradox.tex}{(TeX)}} %%%This embeds the tikz source code into the resulting pdf...
+
+\begin{document}
+
+\frame{\titlepage} %%%Makes titlepage
+
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}  %%%Compresses math
+
+\begin{frame}{What is Braess's Paradox}   %%%Frame with title
+    This is an example of a Veridical Paradox.
+
+    Adding capacity to a transportation network can sometimes actually slow down the traffic!
+\end{frame}
+
+\begin{frame}{Modelling a Transportation Network}   %%%Frame with title
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.3\linewidth]{1.pdf}
+        \caption{A highway network}
+    \end{figure}
+    \begin{itemize}
+        \item Directed Graph 
+        \begin{description}
+            \item[Edges] Highways
+            \item[Nodes] Exits to get on or off a particular Highway.
+        \end{description}
+        \item Each edge has a designated travel time that depends on the amount of traffic it contains.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Strategic Form Games}   %%%Frame with title
+    \begin{definition}[Strategic Form Game]
+        A Strategic Form Game $\Gamma$ is a tuple $\langle N,(S_i)_{i\in N},(u_i)_{i\in N}\rangle$, where
+        \begin{itemize}
+            \item $N=\{1,2,\ldots,n\}$ is a set of players
+            \item $S_1,S_2,\ldots,S_n$ are sets called the strategy sets of the players $1,2,\ldots,n$ respectively
+            \item $u_i : S_1 \times S_2 \times \cdots \times S_n \rightarrow \R$ for $i = 1, 2,\ldots, n$ are mappings called the utility functions or payoff functions.
+        \end{itemize}
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Representation into a Strategic Form Game}   %%%Frame with title
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.3\linewidth]{1.pdf}
+        \caption{A highway network}
+    \end{figure}
+    \begin{itemize}
+        \item Assume $n=4000$ cars, then $N=\{1,2,\ldots,4000\}$
+        \item Strategy Sets are $S_1=S_2=\cdots=S_{4000}=\{C,D\}$
+        \item Assume $n_C$ ($n_D$) cars travel along C (D), Note that $n_C+n_D=n$
+
+        So, the utility functions are
+        \begin{align*}
+            u_i(s_1,\ldots,s_n)&=-45-\frac{n_C}{100} \quad \text{if} \quad s_i = C\\
+            &=-45-\frac{n_D}{100} \quad \text{if} \quad s_i = D
+        \end{align*}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The notion of Nash Equilibrium}   %%%Frame with title
+    \begin{definition}[Pure Strategy Nash Equilibrium]
+        Given a strategic form game $\Gamma = \langle N,(S_i),(u_i)\rangle$, the strategy profile $s^*=(s_1^*,s_2^*,\ldots,s_n^*)$ is called a pure strategy Nash equilibrium of $\Gamma$ if
+        \[u_i(s^*_i,s^*_{-i})\geq u_i(s_i,s^*_{-i})\ \forall s_{i} \in S_{i}\ \forall i=1,2,\ldots,n\]
+        That is, each player’s Nash equilibrium strategy is a best response to the Nash equilibrium strategies of the other players
+    \end{definition}
+
+    \begin{definition}[Best Response Correspondence]<2->
+        Given a strategic form game $\Gamma = \langle N,(S_i),(u_i)\rangle$,the best response correspondence for player $i$ is the mapping $b_i : S_{-i} \rightarrow 2^{S_i}$ defined by
+        \[b_i(s_{-i}) = \{s_i \in S_i : u_i(s_i, s{-i}) \geq u_i(s^\prime_i, s{-i}) \ \forall\  s^\prime_i \in S_i\}\]
+        It can be seen that the strategy profile $(s_1^*,s_2^*,\ldots,s_n^*)$ is a pure strategy Nash equilibrium iff
+        \[s^*_i \in b_i(s^*_{-i}), \forall i = 1,\ldots, n\]
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Interpretations of Nash Equilibrium}
+    \begin{itemize}
+        \item Prescription
+        \item Prediction
+        \item Self-Enforcing Agreement
+        \item Evolution and Steady-State
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Equilibrium Traffic}   %%%Frame with title
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.3\linewidth]{1.pdf}
+        \caption{A highway network}
+    \end{figure}
+    \begin{itemize}
+        \item First consider case when $n_C\neq n_D$, then the two routes will have unequal travel times, and any driver on the slower route would have an incentive to switch to the faster one. 
+        \item Hence any list of strategies in which $n_C$ is not equal to 2000 cannot be a Nash equilibrium; and any list of strategies in which $n_C=n_D = 2000$ is a Nash equilibrium.
+        \item Time delay = $45+\frac{2000}{100}=65$ minutes
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Adding a Route from $C$ to $D$}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{2.pdf}
+        \caption{A highway network}
+    \end{figure}
+    \begin{itemize}
+        \item Now, a fast link from $C$ to $D$ to ease the congestion in the network is introduced
+        \item We will assume the travel time from $C$ to $D$ to be zero as a degenerate case
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Representation into a Strategic Form Game}   %%%Frame with title
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.3\linewidth]{2.pdf}
+        \caption{A highway network}
+    \end{figure}
+    \begin{itemize}
+        \item Again, assume $n=4000$ cars, then $N=\{1,2,\ldots,4000\}$
+        \item Strategy Sets are $S_1=S_2=\cdots=S_{4000}=\{C,D,CD\}$
+        \item Assume $n_C$ ($n_D$) ($n_{CD}$) cars travel along $C$ ($D$) ($CD$), Note that $n_C+n_D+n_{CD}=n$
+
+        So, the utility functions are
+        \begin{align*}
+            u_i(s_1,\ldots,s_n)&=-45-\frac{n_C+n_{CD}}{100} \quad \text{if} \quad s_i = C\\
+            &=-45-\frac{n_D+n_{CD}}{100} \quad \text{if} \quad s_i = D\\
+            &=-\frac{n_C+n_{CD}}{100}-\frac{n_D+n_{CD}}{100} \quad \text{if} \quad s_i = CD
+        \end{align*}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Equilibrium Traffic}   %%%Frame with title
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.3\linewidth]{2.pdf}
+        \caption{A highway network}
+    \end{figure}
+    \begin{itemize}
+        \item A surprising result is that now there is a unique Nash equilibrium (every driver uses the route $CD$).
+        \item Why is it an equilibrium?
+        \item Why is it unique?
+        \item Time delay = $\frac{4000}{100}+\frac{4000}{100}=80$ minutes
+        \item This, time is clearly worse than 65 minutes we can get if half the people choose $C$ and other the half choose $D$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Big Questions}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{5.pdf}
+    \end{figure}
+    \begin{itemize}
+        \item Does an equilibrium traffic pattern always exists?
+        \item How bad Braess's Paradox can be for networks in general?
+        \item How much larger can the equilibrium travel time be after the addition of an edge, relative to what it was before?
+        \item How to design networks to prevent bad equilibria from arising?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{References}
+    \begin{itemize}
+        \item  \href{http://www.cs.cornell.edu/home/kleinber/networks-book/}{Chapter 8 \emph{Networks, Crowds, and Markets: Reasoning about a Highly Connected World} by David Easley and Jon Kleinberg, Cambridge University Press, 2010}
+        \item \href{https://theory.stanford.edu/~tim/papers/routing.pdf}{\textbf{How Bad is Selfish Routing?} by Tim Roughgarden and Eva Tardos}
+    \end{itemize}
+\end{frame}
+\end{document}
