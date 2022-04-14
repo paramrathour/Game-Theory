@@ -1,6 +1,3 @@
-Game Theory
-==================
-
 This repository contains my report on **Game Theory** and its
 corresponding files for *Summer of Science* conducted by *Maths and Physics Club
 IIT Bombay*.
@@ -14,7 +11,7 @@ Introduction
 
 **Here, we study the rigorous mathematics behind this topic and explore its application in various fields.**
 
-This report is divided into parts: Theoretical foundations of Non-Cooperative Game Theory followed by Cooperative Game Theory then Mechanism Design. Finally, I encourage you to look at different Games and their exciting results. Check out my Braess’s Paradox Video [here](Braess's%20Paradox.mkv).
+This report is divided into parts: Theoretical foundations of Non-Cooperative Game Theory followed by Cooperative Game Theory then Mechanism Design. Finally, I encourage you to look at different Games and their exciting results. Check out my Braess’s Paradox Video [here](Braess%20Paradox.mkv).
 
 **The Report can be viewed** [here](Game%20Theory.pdf).
 
